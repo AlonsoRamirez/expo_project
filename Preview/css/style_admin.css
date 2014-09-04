@@ -1,0 +1,32 @@
+.body-wrapper1 .input-group-addon
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: white;
+}
+.form-control:focus
+{
+    background-color: #2b3e50;
+    border-color: inherit;
+
+}
+.form-signup input[type="text"]:focus,.form-signup input[type="password"]:focus { border: 1px solid rgb(50, 118, 177); color: white; }
+.alert-danger-alt { border-color: #B63E5A;background: #E26868;color: black; }
+
+.body-wrapper1 .container
+{
+  margin-left:-200px;
+  width: 1500px;
+}
+
+.body-wrapper1
+{
+  height: 550px;
+  width: 1100px;
+
+}
+
+.text-center
+{
+  color: #5cb85c;
+}
