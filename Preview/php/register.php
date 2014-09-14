@@ -1,3 +1,30 @@
+               <?php
+if(isset($_POST['submit'])) 
+    {
+ 
+$connection =mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$nombre = mysqli_real_escape_string($connection,$_POST['first_name']);
+$apellido= mysqli_real_escape_string($connection,$_POST['last_name']);
+$genero =mysqli_real_escape_string($connection,$_POST['sex']);
+$profession = mysqli_real_escape_string($connection,$_POST['profession']);
+$email =mysqli_real_escape_string($connection,$_POST['email']);
+$usuario =mysqli_real_escape_string($connection,$_POST['user']);
+$password = mysqli_real_escape_string($connection,$_POST['password']);
+$query  = "INSERT INTO `usuario`(`nombre_usu`, `apellido_usu`, `genero_usu`, `profesion_cli`, `email_cli`, `usuario_cli`, `password_cli`) VALUES ('".$nombre."', '".$apellido."', '".$genero."', '".$profession."', '".$email."', '".$usuario."', '".$password."')";
+mysqli_query($connection,$query);
+header("Location:success_user.php");
+
+  }
+    
+
+
+?>
+
+
+
 <?php 
 include("header_register.php"); 
 ?> 
@@ -7,7 +34,7 @@ include("header_register.php");
 <div class="clearfix"></div>
 </div>
 <div class="form-container">
-<form class="form form-horizontal component-uff" data-step-method="sliding" onkeypress="return event.keyCode != 13;" role="form">
+<form class="form form-horizontal component-uff" data-step-method="sliding" onkeypress="return event.keyCode != 13;" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
   <hr>
   <center><i class="fa fa-inbox fa-2x"></i></center>
 <h2 class="text-center">REGÍSTRATE</h2>
@@ -44,9 +71,9 @@ Apellido requerido
 <label class="col-sm-2 control-label" data-sb="fadeInRight">Género</label>
 <div class="col-sm-10">
 <select name="sex" data-sb="fadeInLeft" class="form-control">
-<option value="1">Personal</option>
-<option value="2">Mujer</option>
-<option value="3">Hombre</option>
+<option value="Personal">Personal</option>
+<option value="Mujer">Mujer</option>
+<option value="Hombre">Hombre</option>
 </select>
 </div>
 </div>
@@ -54,10 +81,10 @@ Apellido requerido
 <label class="col-sm-2 control-label" data-sb="fadeInRight">Profesión</label>
 <div class="col-sm-10">
 <select name="profession" class="form-control" data-sb="fadeInLeft">
-<option value="1">Programador</option>
-<option value="2">Desarrollador</option>
-<option value="3">jQuery Fan</option>
-<option value="4">No estoy seguro</option>
+<option value="Programador">Programador</option>
+<option value="Desarrollador">Desarrollador</option>
+<option value="jQuery Fan">jQuery Fan</option>
+<option value="No estoy seguro">No estoy seguro</option>
 </select>
 </div>
 </div>
@@ -71,7 +98,7 @@ Apellido requerido
 <div class="form-group">
 <label class="col-sm-2 control-label" data-sb="rollIn">Correo</label>
 <div class="col-sm-10">
-<input data-sb="bounceInLeft" type="text" class="form-control" data-validation-required="#email_error_required" data-validation-email="#email_error_invalid" name="email">
+<input data-sb="bounceInLeft" type="text" class="form-control" data-validation-required="#email_error_required" data-validation-email="#email_error_invalid" name="email" id="e">
 <div class="clearfix"></div>
 <div id="email_error_required" class="alert alert-danger">
 Correo es requerido
@@ -82,18 +109,56 @@ Correo inválido
 </div>
 </div>
 <div class="form-group">
-<label class="col-sm-2 control-label" data-sb="rollIn">Contrase&ntilde;a</label>
+<label class="col-sm-2 control-label" data-sb="fadeInRight">Usuario</label>
 <div class="col-sm-10">
-<input data-sb="bounceInLeft" type="password" class="form-control" data-validation-required="#password_error_required" name="password">
+<input data-sb="fadeInLeft" type="text" class="form-control" data-validation-required="#user_error_required" name="user" id="u">
+<div class="clearfix"></div>
+<div id="user_error_required" class="alert alert-danger">
+Usuario requerido
+</div>
+</div>
+</div>
+<div class="form-group">
+<label class="col-sm-2 control-label" data-sb="rollIn">Password</label>
+<div class="col-sm-10">
+<input data-sb="bounceInLeft" type="password" class="form-control" data-validation-required="#password_error_required" name="password" id="p">
 <div class="clearfix"></div>
 <div id="password_error_required" class="alert alert-danger">
-Contrase&ntilde;a requerida
+Password requerida
 </div>
 </div>
 </div>
-<ul class="pager">
+	<script>
+function myFunction() { /*Revisa si todos los campos están llenos y si el email no es inválido*/
+    var correo = document.getElementById('e').value;
+    var usuario=document.getElementById('u').value;
+    var password=document.getElementById('p').value;
+    var atpos = correo.indexOf("@");
+    var dotpos = correo.lastIndexOf(".");
+    if( !correo == "" && !usuario =="" && !password =="")
+    {
+    	if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=correo.length)  /*Revisa si el email tiene arroba o punto*/
+    	{
+    		document.getElementById('checkbox').disabled = true;
+          
+        
+        }
+        else
+        {
+        	document.getElementById('checkbox').disabled = false; /*Habilita el checkbox*/
+        	document.getElementById('controls').children[0].style.display = "none"; /*Esconde los botones*/
+        	document.getElementById('controls').children[1].style.display = "none";
+  
+        }
+    }
+
+}
+</script>
+<ul class="pager" id="controls">
 <li class="left" data-sb="bounceInLeft"><a class="prev" data-step-previous="">&laquo; Anterior</a></li>
-<li class="right" data-sb="bounceInLeft"><a class="next" data-step-finish>Terminar &raquo;</a></li>
+<li class="right" data-sb="bounceInLeft" onclick="myFunction()"><a class="next" data-step-finish>Terminar &raquo;</a></li>
+<input type="checkbox" name="checkbox" id="checkbox" disabled="disabled" onchange="document.getElementById('submit').disabled = !this.checked;"/> Acepto los términos y condiciones de uso de Beats On Life <!--Con JS, usamos el evento onchange() cuando cambia el estado del checkbox-->
+<center><input class="btn btn-contact" type="submit"  id="submit" value="Terminar" name="submit" disabled="disabled" /></center>
 </ul>
 <div class="clearfix"></div>
 </div>
@@ -117,6 +182,7 @@ Contrase&ntilde;a requerida
 <h5>Información de la Cuenta</h5>
 <hr/>
 <p>Email : <span data-input-mirror='[name="email"]'></span></p>
+<p>Usuario : <span data-input-mirror='[name="user"]'></span></p>
 <p>Password : <span data-input-mirror='[name="password"]'></span></p>
 </div>
 </div>

@@ -83,18 +83,40 @@ $(document).ready(function(){
 
             
              <div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><a href=""><i class="fa fa-search"></i></a></span>
-  <input class="form-control" type="text" placeholder="Buscar">
+  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+  <input class="form-control" type="text" placeholder="Buscar" onkeyup="showResult(this.value)">
  
 </div>
       
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
+       <div id="livesearch"></div>
+
     </nav>
 
-
-      
+<script>
+      function showResult(str) { //Función para LIVESEARCH y conexión con el documento XML contenido en livesearch.php
+  if (str.length==0) {  //Si no hay nada, no se muestra algo y retorna un valor nulo
+    document.getElementById("livesearch").innerHTML="";
+    document.getElementById("livesearch").style.border="0px";
+    return;
+  }
+  if (window.XMLHttpRequest) { //Hace solicitud HTTP para XML
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {  //Cuando el XML esté listo, da la respuesta y se abre el parámetro GET para la conexión.
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","livesearch.php?q="+str,true); 
+  xmlhttp.send();
+}
+</script>
 	
 
 
@@ -110,18 +132,7 @@ $(document).ready(function(){
 	<ul>
 		
 	
-		<li class="active">
-			<h3>Galería <i class="fa fa-picture-o"></i></h3>
-			<ul>
-		  <li><a href="#">Cuerda</a></li>
-        <li><a href="#">Viento-metal</a></li>
-        <li><a href="#">Viento-madera</a></li>
-        <li><a href="#">Teclado</a></li>
-        <li><a href="#">Percusión</a></li>
-        <li><a href="#">Varios</a></li>
-				<br>
-			</ul>
-		</li>
+
 		<li>
 			<h3>Compra <i class="fa fa-shopping-cart"></i></h3>
 			<ul>
@@ -134,7 +145,7 @@ $(document).ready(function(){
 		<li>
 			<h3>Registro <i class="fa fa-users"></i></h3>
 			<ul>
-				<li><a href="">Log In</a></li>
+				<li><a href="loginadmin.php">Log In</a></li>
         <li><a href="register.php">Nuevo Usuario</a></li>
 				<br>
 			

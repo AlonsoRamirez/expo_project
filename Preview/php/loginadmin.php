@@ -1,7 +1,18 @@
 <?php
+session_start();
+if (isset($_SESSION['LOGIN']))
+{
+    echo '<script>location.href = "paneladmin.php";</script>'; 
+}
+else
+{
+?>
+
+<?php
 include("header_login_admin.php");
 ?>
         <center>
+         
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -9,54 +20,44 @@ include("header_login_admin.php");
                 <div class="panel-body">
                     <h5 class="text-center">
                         Beats On Life</h5>
-                    <form class="form form-signup" role="form" method="post" action="" name="frm"  >
+                         <div id="result"></div>
+                    <form class="form form-signup" role="form" Smethod="post"  action="return false" onsubmit="return false" name="frm"  >
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                            <input type="text" class="form-control" name="username"  id="username" placeholder="Usuario"  required="required"/>
+                            <input type="text" class="form-control" name="user"  id="user" placeholder="Usuario"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-lock"></span></span>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Contrase&ntilde;a"  required="required"/>
+                            <input type="password" id="pass" name="pass" class="form-control" placeholder="Contrase&ntilde;a" />
                         </div>
                     </div>
                 </div>
-                <input type="submit" name="submit" value="Entrar"  class="btn btn-sm btn-primary btn-block">
-
+              <button class="btn btn-contact" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);">ENTRAR</button>
+              
+<br>
                <br>
+
                <p style="text-align:center;"><a href="register.php">¿Nuevo Usuario? ¡Regístrate!</a></p>
+               <p style="text-align:center;"><a href="register.php">Recuperar Contraseña</a></p>
                </form>
-
-                <?php
-/*Conexión a BD*/
- 
-$connection =mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
-
-
-
-if(isset($_POST['submit'])) 
-    {
-     $user=  mysqli_real_escape_string($connection,$_POST['username']);
-     $contra= mysqli_real_escape_string($connection,$_POST['password']);
-   $query = mysqli_query($connection,"SELECT * from administrador where admin_name='".$user."' and admin_pass='".$contra. "'");
-   $row = mysqli_fetch_array($query) or die(mysql_error()); 
-
-  if(count($row)>=1)
+               <script>
+        function Validar(user, pass)
         {
-            header("Location:indexadmin.php");
+            $.ajax({
+                url: "validate.php",
+                type: "POST",
+                data: "user="+user+"&pass="+pass,
+                success: function(resp){
+                    $('#result').html(resp)
+                }        
+            });
         }
-        else
-        {
-            echo("Usuario incorrecto o contraseña incorrecta.");
-        }        
-  
-  }
-    
+        </script>
 
 
-?>
 
 
         
@@ -69,3 +70,6 @@ if(isset($_POST['submit']))
            </div>
 </body>
 </html>
+<?php
+}
+?>

@@ -9,7 +9,7 @@
   <title>Beats on Life | Welcome</title>
   <link rel="stylesheet" href="css/font-awesome.css">
   <link href="css/bootstrap.css" rel="stylesheet">
-       <!--Apariencia Bootstrap-->
+
 <body >
 
   <div class="bs-example">

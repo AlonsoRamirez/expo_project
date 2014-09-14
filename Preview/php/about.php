@@ -43,7 +43,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Fátima Carolina<br> Castaneda Ascencio</span>
+                    <span class="overlay-text-thumb">Fátima Carolina<br> Castaneda Ascencio <center><hr width="150"></center>
+                      DISEÑO</span> 
                 </div>
               <img src="../img/carolina.jpg">
 
@@ -54,7 +55,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Rocío Abigail<br> Laínez Trigueros</span>
+                    <span class="overlay-text-thumb">Rocío Abigail<br> Laínez Trigueros <center><hr width="150"></center>
+                      DISEÑO</span>
                 </div>
               <img src="../img/rocio.jpg">
 
@@ -65,7 +67,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Eduardo Josué<br> García Pérez</span>
+                    <span class="overlay-text-thumb">Eduardo Josué<br> García Pérez <center><hr width="150"></center>
+                      DISEÑO/PROGRAMADOR</span> 
                 </div>
               <img src="../img/josue.jpg">
 
@@ -76,7 +79,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Alonso Emmanuel<br> Ramírez García</span>
+                    <span class="overlay-text-thumb">Alonso Emmanuel<br> Ramírez García <center><hr width="150"></center>
+                      JEFE DE PROYECTO </span>
                 </div>
               <img src="../img/alonso.jpg">
 
@@ -87,7 +91,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Douglas Enrique<br> Gónzalez Rodríguez</span>
+                    <span class="overlay-text-thumb">Douglas Enrique<br> Gónzalez Rodríguez <center><hr width="150"></center>
+                      PROGRAMADOR</span> 
                 </div>
               <img src="../img/douglas.jpg">
 
@@ -98,7 +103,8 @@ include("header_admin_about.php");
               <div class="image-wrap">
                <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">José Ángel<br> Méndez Sánchez</span>
+                    <span class="overlay-text-thumb">José Ángel<br> Méndez Sánchez <center><hr width="150"></center>
+                      DISEÑO</span> 
                 </div>
               <img src="../img/jose2.jpg">
 

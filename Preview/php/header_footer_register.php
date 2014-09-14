@@ -69,7 +69,7 @@
                         <li ><a class="google-plus" href="#home"><span>Beats On Life</span><i class="fa fa-google-plus"></i></a>
                         </li> 
                          <li class="footer-menu-divider">|</li>  
-                            <li ><a class="twitter" href="#home"><span>@BeatsOnLife</span><i class="fa fa-twitter"></i></a>
+                            <li ><a class="twitter" href="#home"><span>@BeatsOnLife</span><i class="fa fa-github"></i></a>
                         </li>  
                         
                          <li class="footer-menu-divider">|</li>  

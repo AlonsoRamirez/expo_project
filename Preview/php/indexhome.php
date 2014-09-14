@@ -1,8 +1,50 @@
 <?php
+$connection = mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
+$query  = "SELECT * FROM `images` order by id_image desc limit 6";
+$res    = mysqli_query($connection,$query);
+$count  =   mysqli_num_rows($res);
+$slides='';
+$Indicators='';
+$counter=0;
+
+ while($row=mysqli_fetch_array($res))
+    {
+ 
+        $title = $row['titulo'];
+        $image = $row['imagen'];
+        if($counter == 0)
+           {
+            $Indicators .='<li data-target="#carousel-example-generic" data-slide-to="'.$counter.'" class="active"></li>';
+            $slides .= '<div class="item active">
+            <img src="../img/'.$image.'" alt="'.$title.'" />
+            <div class="carousel-caption">
+              <h3>'.$title.'</h3>    
+            </div>
+          </div>';
+ 
+        }
+        else
+        {
+            $Indicators .='<li data-target="#carousel-example-generic" data-slide-to="'.$counter.'"></li>';
+            $slides .= '<div class="item">
+            <img src="../img/'.$image.'" alt="'.$title.'" />
+            <div class="carousel-caption">
+              <h3>'.$title.'</h3>      
+            </div>
+          </div>';
+        }
+        $counter++;
+    }
+ 
+
+?>
+
+
+<?php
 include("header_admin_home.php");
 ?>
-              <div class="body-wrapper">
 
+              <div class="body-wrapper">
               <div id="slider-wrapper">
 
                 <div class="row carousel-holder">
@@ -10,66 +52,26 @@ include("header_admin_home.php");
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                 <?php echo $Indicators; ?>
                             </ol>
                         <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="../img/Slide-0.png" alt="">
-                                       <div class="carousel-caption">
-              <h1>Baterías</h1>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Galería</a></p>
-            </div>
-                                </div>
+                                 <?php echo $slides; ?>  
 
-                                <div class="item">
-                                    <img class="slide-image" src="../img/Slide-1.png" alt="">
-                                     <div class="carousel-caption">
-              <h1>Violines</h1>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="../img/Slide-2.png" alt="">
-                                     <div class="carousel-caption">
-              <h1>Guitarras</h1>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse </a></p>
-            </div>
-                                </div>
-                                 <div class="item">
-                                    <img class="slide-image" src="../img/Slide-3.png" alt="">
-                                     <div class="carousel-caption">
-              <h1>Saxofón</h1>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse </a></p>
-            </div>
-                                </div>
-                                 <div class="item">
-                                    <img class="slide-image" src="../img/Slide-4.png" alt="">
-                                     <div class="carousel-caption">
-              <h1>Chelo</h1>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse </a></p>
-            </div>
-
-                                </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            	<br>
-                            	<br>
-                            	<br>
-                            	<br>
-                            	<br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
                                 <span class="fa fa-chevron-circle-left"></span>
                             </a>
                             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            	<br>
-                            	<br>
-                            	<br>
-                            	<br>
-                            	<br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
                                 <span class="fa fa-chevron-circle-right"></span>
                             </a>
                         </div>
@@ -146,8 +148,8 @@ include("header_admin_home.php");
 
     </div>   
     <br>
-    <hr>
-   <center> <p><a class="btn btn-lg btn-warning" href="#" role="button">MÁS NOTICIAS <i class="fa fa-angle-double-right"></i> <i class="fa fa-angle-double-right"></i> <i class="fa fa-angle-double-right"></i> </a></p></center>
+
+  
 </div>
               
            </div>
@@ -155,8 +157,8 @@ include("header_admin_home.php");
     <div id="multimedia-feed">
      <h2><i class="fa fa-youtube-play"></i> Multimedia & Social</h2>
      <hr>
-     <center><iframe width="325" height="275" src="http://www.youtube.com/embed/sf6LD2B_kDQ" frameborder="0" allowfullscreen></iframe></center>
-    <center>   <iframe src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FBeatsOnLife2014&amp;width&amp;height=300&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=true&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:300px;" allowTransparency="true"></iframe>     
+     <center><iframe width="300" height="200" src="http://www.youtube.com/embed/sf6LD2B_kDQ" frameborder="0" allowfullscreen></iframe></center>
+    <center>   <iframe src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FBeatsOnLife2014&amp;width&amp;height=400&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=true&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:400px;" allowTransparency="true"></iframe>     
 </center>
     </div>
            </div>

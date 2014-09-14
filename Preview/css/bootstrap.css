@@ -1877,8 +1877,8 @@ select[multiple].input-lg {
 }
 .has-success .input-group-addon {
   color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #3c763d;
+  background-color: #428bca;
+  border-color: #428bca;
 }
 .has-success .form-control-feedback {
   color: #3c763d;
@@ -2065,7 +2065,8 @@ fieldset[disabled] .btn {
 .btn-contact {
   color: #fff;
   background-color:#00bf8f;;
-  border-color: #00bf8f;;
+  border-color: #00bf8f;
+   border-radius: 22.5px;
  
 }
 
@@ -3339,6 +3340,7 @@ input[type="button"].btn-block {
   position: relative;
   display: table;
   border-collapse: separate;
+  margin-top:10px;
 
  
 }
@@ -3426,8 +3428,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: white;
   text-align: center;
-  background-color: #00FFFF;
-  border: 1px solid #00FFFF;
+  background-color: #428bca;
+  border: 1px solid #428bca;
   border-radius: 4px;
   margin-left: 20px;
 

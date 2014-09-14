@@ -24,11 +24,32 @@ a {
 	-ms-transition:left 1s;
 	border-radius: 0px 4px 4px 0px;
 	text-decoration: none;
-	font-family: Helvetica;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 }
 
+#livesearch
+{
+
+	background-color: #428bca;
+	width: 535px;
+	margin-left: 683px;
+	position: absolute;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	color: #fff;
+}
+
+#livesearch a
+{
+   color: #fff;
+}
+
+#livesearch a:hover
+{
+	color: gold;
+}
  #intro-video
 {
   
@@ -62,7 +83,7 @@ background-color: #022f5a;
 
 }
 #menu ul li{
-	font-family: 'Exo 2', sans-serif;
+	 font-family: "Lato", Helvetica, Arial, sans-serif;
 	height: 40px;
 	margin-top: 5px;
 	transition: background 1s;
@@ -143,8 +164,7 @@ body {
 	margin: 100px auto 0 auto;
 	color: #ddd;
 	margin-top:33px;
-	font-family: 16px ;
-
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 
 
@@ -160,7 +180,7 @@ border-top-style: solid;
 background-color:#181818 ;
 color:skyblue ;
 border-radius: .25em;
-font-family: Aleo;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-weight: bolder;
 
 
@@ -212,7 +232,7 @@ background-color: #080808;
 border-top-color: white;
 border-top-style: solid;
 	padding-top: 5px;
-	font-family: Helvetica;
+font-family: "Lato", Helvetica, Arial, sans-serif;
 	font-weight: bold;
 	margin-top:-10px;
 	color:#333;
@@ -333,6 +353,7 @@ h4
 	width: 800px;
 	margin-top: 101px;
 	margin-left: 115px;
+
 }
 
 .body-wrapper
@@ -341,7 +362,7 @@ h4
 	border-top-left-radius: 1em;
 	border-top-right-radius: 1em;
 	width: 1050px;
-	height: 1800px;
+	height: 1700px;
 	top: 90px;
 	margin-top: 50px;
 	margin-left: 135px;
@@ -437,8 +458,8 @@ opacity: 0.8;
 }
 
 #social-networks-footer li .twitter i:hover{
-	background: #54A4DE;
-	border: 2px solid #54A4DE;
+	background: purple;
+	border: 2px solid purple;
 	transition:all 1s;
 	
 }
@@ -607,7 +628,7 @@ opacity: 0.8;
   text-align: center;
   visibility: hidden;
   border-radius: 6px;
-  font-family: Helvetica;
+ font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 #social-networks-footer a span:after {
   content: '';
@@ -707,7 +728,7 @@ opacity: 0.8;
     color: #ddd;
     text-align: center;
     padding-bottom: 20px;
-    font-family: Aleo,Helvetica;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 /*-----------------CMENDEZ-----------------*/
 
@@ -716,7 +737,7 @@ opacity: 0.8;
 	background-color: rgba(0, 0, 0, 0.8);border-radius: 1em;
 	width: 1050px;
 	margin-top: 30px;
-    font-family: Aleo,Helvetica;
+   font-family: "Lato", Helvetica, Arial, sans-serif;
     font-size: 14pt;
     padding-left: 10px;
     padding-bottom: 20px;
@@ -756,7 +777,7 @@ opacity: 0.8;
 	font-size: 14pt;
 	padding-top: 15px;
 	padding-left: 1px;
-	font-family: Aleo;
+font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 
 #cformu{
@@ -806,7 +827,7 @@ input:focus, #message:focus{
 	border-radius: 4px;
 	background-color: #DE5E60;
 	color: white;
-	font-family: Helvetica;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 .ab-1
 {
@@ -945,7 +966,6 @@ padding: 2px;
 	border-radius: 5px;
 	border-color: #074e68;
 	font-family: Helvetica;
-}
 
 #contr button{
 	background: #000033;

@@ -6,10 +6,11 @@
   <meta name="google-translate-customization" content="c23c45077a426555-c3cb83197ae3780d-g4fd4c5878f4ef239-13"></meta>
       <meta http-equiv="refresh" content="6;url=indexhome.php" />
       <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+       <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
   <title>Beats on Life | Thanks for the FeedBack</title>
-  <link rel="stylesheet" href="css/font-awesome.css">
-  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/font-awesome.css">
+  <link href="../css/bootstrap.css" rel="stylesheet">
    <style type="text/css">
  #intro-video
 {
