@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-          <a class="navbar-brand" >Beats on Life</a>
+          <a class="navbar-brand" href="home.php" >Beats on Life</a>
           
                 
 

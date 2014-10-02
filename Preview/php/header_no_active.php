@@ -10,6 +10,22 @@
    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/estilos.css">
   <link rel="stylesheet" href="../css/font-awesome.css">
+  <style type="text/css">
+  .comment-avatar
+{
+  margin-left: 10px;
+  margin-top: -130px;
+  border-radius: 22.5px;
+}
+
+#comment-post
+{
+  margin-left: 100px;
+}
+
+
+</style>
+
      <link href="../css/bootstrap.css" rel="stylesheet">
        <!--Apariencia Bootstrap-->
      <script src="../js/prefixfree-1.0.7.js" type="text/javascript"></script>
@@ -65,14 +81,14 @@ $(document).ready(function(){
         <div class="collapse navbar-collapse bs-navbar-collapse">
          
             <ul class="nav navbar-nav ">
-                   <li ><a href="indexhome.php"><i class="fa fa-home"></i>Home</a>
+                   <li ><a href="home.php"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li ><a href="inventario.php"><i class="fa fa-th-large"></i> Inventario</a>
                         </li>
                         <li ><a href="about.php"><i class="fa fa-user"></i> Acerca De</a>
                         </li>
 
-                        <li><a href="about.php"><i class="fa fa-question-circle"></i> Ayuda</a>
+                        <li><a href="ayuda.php"><i class="fa fa-question-circle"></i> Ayuda</a>
                         </li>
                         
                    
@@ -131,17 +147,16 @@ $(document).ready(function(){
 		 <div id="accordian">
 	<ul>
 		
-	
+	 <li>
+      <h3>Compra <i class="fa fa-shopping-cart"></i></h3>
+      <ul>
+        <li><a href="shopping_cart.php">Estado de compra</a></li>
+        <li><a href="order.php">Adquisición</a></li>
+        <br>
+      
+      </ul>
+    </li>
 
-		<li>
-			<h3>Compra <i class="fa fa-shopping-cart"></i></h3>
-			<ul>
-				<li><a href="#">Adquisición</a></li>
-        <li><a href="#">Estado de compra</a></li>
-				<br>
-			
-			</ul>
-		</li>
 		<li>
 			<h3>Registro <i class="fa fa-users"></i></h3>
 			<ul>
@@ -154,7 +169,7 @@ $(document).ready(function(){
 		<li>
 			<h3>Noticias <i class="fa fa-book"></i></h3>
 			<ul>
-				<li><a href="#">Noticias </a></li>
+				<li><a href="main_news.php">Noticias </a></li>
 				<br>
 
 			

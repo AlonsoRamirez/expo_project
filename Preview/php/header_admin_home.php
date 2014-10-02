@@ -18,6 +18,10 @@
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
       <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'es'}
+</script>
+
 
 
 
@@ -62,14 +66,14 @@ $(document).ready(function(){
         <div class="collapse navbar-collapse bs-navbar-collapse">
          
             <ul class="nav navbar-nav ">
-                   <li class="active"><a href="indexhome.php"><i class="fa fa-home"></i>Home</a>
+                   <li class="active"><a href="home.php"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li ><a href="inventario.php"><i class="fa fa-th-large"></i> Inventario</a>
                         </li>
                         <li ><a href="about.php"><i class="fa fa-user"></i> Acerca De</a>
                         </li>
 
-                        <li><a href="about.php"><i class="fa fa-question-circle"></i> Ayuda</a>
+                        <li><a href="ayuda.php"><i class="fa fa-question-circle"></i> Ayuda</a>
                         </li>
                         
                    
@@ -124,16 +128,18 @@ $(document).ready(function(){
 		 <div id="accordian">
 	<ul>
 		
+  
+   <li>
+      <h3>Compra <i class="fa fa-shopping-cart"></i></h3>
+      <ul>
+        <li><a href="shopping_cart.php">Estado de compra</a></li>
+        <li><a href="order.php">Adquisición</a></li>
+        <br>
+      
+      </ul>
+    </li>
 
-		<li>
-			<h3>Compra <i class="fa fa-shopping-cart"></i></h3>
-			<ul>
-				<li><a href="#">Adquisición</a></li>
-        <li><a href="#">Estado de compra</a></li>
-				<br>
-			
-			</ul>
-		</li>
+		
 		<li>
 			<h3>Registro <i class="fa fa-users"></i></h3>
 			<ul>
@@ -146,7 +152,7 @@ $(document).ready(function(){
 		<li>
 			<h3>Noticias <i class="fa fa-book"></i></h3>
 			<ul>
-				<li><a href="#">Noticias </a></li>
+				<li><a href="main_news.php">Noticias </a></li>
 				<br>
 
 			

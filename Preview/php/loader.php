@@ -5,10 +5,11 @@
 
   <meta charset="UTF-8">
 
-  <meta http-equiv="refresh" content="5;url=indexhome.php" />
+  <meta http-equiv="refresh" content="5;url=home.php" />
 
 
   <title>Bienvenidos a Beats on Life</title>
+   <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="../css/loading-style.css" media="screen" type="text/css" />
 

@@ -4,4 +4,16 @@
 	<title>Historia de música</title>
 	<url>historia.php</url>
 </link>
+<link>
+	<title>Guitarras en septiembre</title>
+	<url>detail_new.php?id=9</url>
+</link>
+<link>
+	<title>Escuela musical en China</title>
+	<url>detail_new.php?id=3</url>
+</link>
+<link>
+	<title>Importancia del piano en el EDM</title>
+	<url>detail_new.php?id=10</url>
+</link>
 </pages>

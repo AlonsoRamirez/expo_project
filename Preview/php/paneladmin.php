@@ -43,21 +43,25 @@ if (isset($_SESSION['LOGIN']))
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="active" class="nav navbar-nav side-nav">
-                    <li class="selected"><a href="paneladmin.phps"><i class="fa fa-bullseye"></i> Panel de Administrador</a></li>
-                    <li><a href="portfolio.html"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
-                    <li><a href="blog.html"><i class="fa  fa-pencil-square"></i> Modificar Productos</a></li>
+                    <li class="selected"><a href="paneladmin.php"><i class="fa fa-bullseye"></i> Panel de Administrador</a></li>
+                    <li><a href="addproducts.php"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
+                       <li><a href="update_products.php"><i class="fa  fa-pencil-square"></i> Actualizar Productos</a></li>
                     <li><a href="eliminarproductos.php"><i class="fa fa-minus-square"></i> Eliminar Productos</a></li>
                     <li><a href="consulta.php"><i class="fa fa-list-ol"></i> Consultar Productos</a></li>
                     <li><a href="addnew.php"><i class="fa fa-picture-o"></i> Slider dinámico</a></li>
-                    <li><a href="forms.html"><i class="fa fa-globe"></i> Noticias</a></li>
-                    <li><a href="typography.html"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
+             <li><a href="edit_news.php"><i class="fa fa-globe"></i> Noticias</a></li>
+                    <li><a href="report_shop.php"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right navbar-user">
                     <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['LOGIN']; ?><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../img/<?php echo $_SESSION['LOGIN'];?>.ico">
+                             <?php echo $_SESSION['LOGIN'];?>
+                              <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
+                            <li><a href="home.php" target="_blank"><i class="fa fa-home"></i> Ir a Página Principal</a></li>
+                            <li><a href="change_password.php"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
                             <li><a href="logout.php"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
 
                         </ul>
@@ -76,6 +80,7 @@ if (isset($_SESSION['LOGIN']))
                     Además, puede modificar su contraseña o cerrar sesión en el menú que se encuentra debajo de su nombre de usuario.</small></h1>
                     <hr>
                   <h4>Visitas al panel de administración en esta sesión: <?php echo $_SESSION['count'];?> </h4>
+               
                 </div>
             </div>
         

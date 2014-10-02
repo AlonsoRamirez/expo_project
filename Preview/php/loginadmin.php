@@ -21,7 +21,7 @@ include("header_login_admin.php");
                     <h5 class="text-center">
                         Beats On Life</h5>
                          <div id="result"></div>
-                    <form class="form form-signup" role="form" Smethod="post"  action="return false" onsubmit="return false" name="frm"  >
+                    <form class="form form-signup" role="form" method="post"  action="return false" onsubmit="return false" name="frm"  >
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-user"></span></span>
@@ -41,7 +41,7 @@ include("header_login_admin.php");
                <br>
 
                <p style="text-align:center;"><a href="register.php">¿Nuevo Usuario? ¡Regístrate!</a></p>
-               <p style="text-align:center;"><a href="register.php">Recuperar Contraseña</a></p>
+            
                </form>
                <script>
         function Validar(user, pass)

@@ -62,19 +62,16 @@
   
 <ul class="list-inline">
                      
-                  <li ><a class="facebook" href="http://www.facebook.com/BeatsOnLife2014"><span>Beats On Life</span><i class="fa fa-fb"></i></a>
+                <li ><a class="facebook" href="http://www.facebook.com/BeatsOnLife2014"><span>Beats On Life</span><i class="fa fa-fb"></i></a>
                         </li>  
                          
                          <li class="footer-menu-divider">|</li>  
-                        <li ><a class="google-plus" href="#home"><span>Beats On Life</span><i class="fa fa-google-plus"></i></a>
+                        <li ><a class="google-plus" href="https://plus.google.com/u/0/114105927429129796715/posts/p/pub"><span>Beats On Life</span><i class="fa fa-google-plus"></i></a>
                         </li> 
                          <li class="footer-menu-divider">|</li>  
-                            <li ><a class="twitter" href="#home"><span>@BeatsOnLife</span><i class="fa fa-github"></i></a>
+                            <li ><a class="twitter" href="https://github.com/AlonsoRamirez/expo_project"><span>expo-project</span><i class="fa fa-github"></i></a>
                         </li>  
-                        
-                         <li class="footer-menu-divider">|</li>  
-                            <li ><a class="email" href="#home"><span>beats_onlife@outlook.com</span><i class="fa fa-envelope"></i></a>
-                        </li>  
+                    
                         
                     </ul>
                             

@@ -1,4 +1,130 @@
 <?php
+$connection = mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
+$query  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Cuerda\"";
+$query1  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Percusion\"";
+$query2  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Viento-madera\"";
+$query3  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Viento-metal\"";
+$query4 = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Varios\"";
+$query5  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto` WHERE `categoria_pr`= \"Teclado\"";
+$res    = mysqli_query($connection,$query);
+$res1   = mysqli_query($connection,$query1);
+$res2   = mysqli_query($connection,$query2);
+$res3    = mysqli_query($connection,$query3);
+$res4   = mysqli_query($connection,$query4);
+$res5    = mysqli_query($connection,$query5);
+$count  =   mysqli_num_rows($res);
+$count1  =   mysqli_num_rows($res1);
+$count2  =   mysqli_num_rows($res2);
+$count3  =   mysqli_num_rows($res3);
+$count4  =   mysqli_num_rows($res4);
+$count5  =   mysqli_num_rows($res5);
+$print='';
+$print1='';
+$print2='';
+$print3='';
+$print4='';
+$print5='';
+
+
+ while($row=mysqli_fetch_array($res))
+    {
+       $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+          $print.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+        
+    }
+
+    while($row=mysqli_fetch_array($res1))
+    {
+ 
+        $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+           $print1.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+    }
+
+    while($row=mysqli_fetch_array($res2))
+    {
+        $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+           $print2.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+ 
+        
+    }
+
+    while($row=mysqli_fetch_array($res3))
+    {
+        $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+           $print3.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+ 
+        
+    }
+
+    while($row=mysqli_fetch_array($res4))
+    {
+        $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+           $print4.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+ 
+        
+    }
+
+    while($row=mysqli_fetch_array($res5))
+    {
+        $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+           $print5.="<tr>
+                <td>".$codigo."</td>
+                <td>".$nombre."</td>
+                <td>".$descripcion."</td>
+                <td>".$precio."</td>
+              </tr>";
+ 
+ 
+        
+    }
 session_start();
 if (isset($_SESSION['LOGIN']))
 {
@@ -33,20 +159,24 @@ if (isset($_SESSION['LOGIN']))
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="active" class="nav navbar-nav side-nav">
                     <li><a href="paneladmin.php"><i class="fa fa-bullseye"></i> Panel de Administrador</a></li>
-                    <li><a href="portfolio.html"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
-                    <li><a href="blog.html"><i class="fa  fa-pencil-square"></i> Modificar Productos</a></li>
+                    <li><a href="addproducts.php"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
+               <li><a href="update_products.php"><i class="fa  fa-pencil-square"></i> Actualizar Productos</a></li>
                     <li><a href="eliminarproductos.php"><i class="fa fa-minus-square"></i> Eliminar Productos</a></li>
                     <li class="selected"><a href="consulta.php"><i class="fa fa-list-ol"></i> Consultar Productos</a></li>
                     <li><a href="addnew.php"><i class="fa fa-picture-o"></i> Slider dinámico</a></li>
-                    <li><a href="forms.html"><i class="fa fa-globe"></i> Noticias</a></li>
-                    <li><a href="typography.html"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
+                  <li><a href="edit_news.php"><i class="fa fa-globe"></i> Noticias</a></li>
+                    <li><a href="report_shop.php"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right navbar-user">
+                  <ul class="nav navbar-nav navbar-right navbar-user">
                     <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['LOGIN']; ?><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../img/<?php echo $_SESSION['LOGIN'];?>.ico">
+                             <?php echo $_SESSION['LOGIN'];?>
+                              <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
+                            <li><a href="home.php" target="_blank"><i class="fa fa-home"></i> Ir a Página Principal</a></li>
+                             <li><a href="change_password.php"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
                             <li><a href="logout.php"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
 
                         </ul>
@@ -75,246 +205,113 @@ if (isset($_SESSION['LOGIN']))
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="guitarras">
         <form id="tab">
-           <div class="panel-heading">
-            <h3 class="panel-title">Cuerda</h3>
-          </div>
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+              <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+              
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+              
+            <?php echo $print;?>
             </tbody>
           </table> 
           </form>
         </div>
         <div class="tab-pane fade" id="pianos">
       <form id="tab2">
-          <div class="panel-heading">
-            <h3 class="panel-title">Varios</h3>
-          </div>
+
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+           <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+              
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+                      <?php echo $print4;?>
             </tbody>
           </table> 
       </form>
       </div>
       <div class="tab-pane fade" id="violines">
       <form id="tab2">
-          <div class="panel-heading">
-            <h3 class="panel-title">Viento-metal</h3>
-          </div>
+        
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+      <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+                 <?php echo $print2;?>
             </tbody>
           </table> 
       </form>
       </div>
       <div class="tab-pane fade" id="baterias">
       <form id="tab2">
-          <div class="panel-heading">
-            <h3 class="panel-title">Viento-madera</h3>
-          </div>
+      
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+              <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+             
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+            <?php echo $print3;?>
             </tbody>
           </table> 
       </form>
       </div>
       <div class="tab-pane fade" id="bajos">
       <form id="tab2">
-          <div class="panel-heading">
-            <h3 class="panel-title">Percusión</h3>
-          </div>
+         
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+  <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+               <?php echo $print1;?>
+             
             </tbody>
           </table> 
       </form>
       </div>
       <div class="tab-pane fade" id="varios">
       <form id="tab2">
-          <div class="panel-heading">
-            <h3 class="panel-title">Teclado</h3>
-          </div>
+         
 <table class="table" id="dev-table">
             <thead>
              <tr >
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Comprador</th>
-                <th>Total</th>
+           <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+           
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1</td>
-                <td>Kilgore</td>
-                <td>Trout</td>
-                <td>kilgore</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>Loblaw</td>
-                <td>boblahblah</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Holden</td>
-                <td>Caulfield</td>
-                <td>penceyreject</td>
-              </tr>
+                 <?php echo $print5;?>
             </tbody>
           </table> 
       </form>

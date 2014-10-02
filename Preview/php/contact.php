@@ -1,46 +1,3 @@
-<?php
-
-$msg = null;
-
-      if (isset($_POST["phpmailer"]))
-     {
-        
-    $nombre = $_POST["nombre"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $asunto =$_POST["issue"];
-    $mensaje = $_POST["message"];
-date_default_timezone_set('America/El_Salvador');
-require_once 'phpmailer/class.phpmailer.php';
-require_once 'phpmailer/class.smtp.php';
-$mail = new PHPMailer();
-$mail->isSMTP(); // telling the class to use SMTP
-$mail->SMTPDebug = 2;
-$mail->SMTPAuth   = true;                  // enable SMTP authentication
-$mail->Host       = "ssl://smtp.gmail.com";      // sets GMAIL as the SMTP server
-$mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-$mail->SMTPSecure = 'ssl';
-$mail->Username   = "alonsoramirez1@gmail.com";  // GMAIL username
-$mail->Password   = "loncho1.";  
-$mail->setFrom('alonsoramirez1@gmail.com', 'Alonso');
-$mail->addReplyTo('alonsoramirez1@gmail.com', 'Alonso');
-$mail->addAddress($email, $nombre);
-$mail->Subject = $asunto;
-$mail->msgHTML('<p>"'.$mensaje.'"</p>');
-
-if (!$mail-> send())
-     {
-    $msg= "Error de correo";
-     } 
-     else 
-     {
-    header("Location:emailsent.php");
-     }
-}
-
-?>
-
-
 
 <?php
 include("header_no_active.php");
@@ -92,23 +49,15 @@ include("header_no_active.php");
            <div class="body-wrapper2">
             <br>
             <hr>
-           <center><h6><?php echo $msg; ?></h6></center>
            <center> <h2 class="ab-2"><strong>FORMULARIO</strong> DE CONTACTO</h2> </center>
             <hr> 
          
-            <form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"] );?>" method="post" enctype="multipart/form-data" id="cformu">
+            <form action="send_mail.php" method="post" enctype="multipart/form-data" id="cformu">
               <li>
                 <label for="name">Nombre completo:</label>
                 <br> 
-                <input type="text" id="name" name="nombre" value="" placeholder=" Tu nombre" required="required" />
+                <input type="text" id="nombre" name="nombre" value="" placeholder=" Tu nombre" required="required" />
               </li>
-               <li>
-                <label for="number">Número de teléfono:</label>
-                <br>
-                <input type="tel" id="number" name="phone" value="" placeholder=" Numero de teléfono" required="required" min="8" max="8"/>
-              </li>
-          <br>
-              <br>
                <li>
                 <label for="issue">Asunto:</label>
                 <br>
@@ -122,6 +71,7 @@ include("header_no_active.php");
                  <br><br>
                 <label for="" id="mensaje">Mensaje:</label>
                 <br>
+                
                <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required="required"></textarea>
                 <br>
                 <center><button type="submit" class="btn btn-default" id="submit" name="phpmailer"> <i class="fa fa-send"></i> Submit</button></center>

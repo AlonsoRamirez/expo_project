@@ -17,11 +17,12 @@ if (! $_POST['user'] == null || ! $_POST['pass'] == null)
 {
     $user = mysqli_real_escape_string($connection, $_POST['user']);
     $pass = mysqli_real_escape_string($connection, $_POST['pass']); 
-    $consulta = mysqli_query($connection, "SELECT admin_name, admin_pass FROM administrador WHERE admin_name = '$user' AND admin_pass = '$pass'");
+    $consulta = mysqli_query($connection, "SELECT admin_id, admin_name, admin_pass FROM administrador WHERE admin_name = '$user' AND admin_pass = '$pass'");
     $row = mysqli_fetch_array($consulta) or die(mysql_error()); 
     if (count($row)>0)
     {
         $_SESSION["LOGIN"] = $user;
+        $_SESSION["id"] = $row["admin_id"];
         echo '<script>location.href = "paneladmin.php"</script>';
     }
     /*else
@@ -29,6 +30,4 @@ if (! $_POST['user'] == null || ! $_POST['pass'] == null)
       echo '<p>Usuario o contraseña incorrectos.</p>';
     }*/
 }
-
-
 ?>

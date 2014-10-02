@@ -58,14 +58,14 @@
         <div class="collapse navbar-collapse bs-navbar-collapse">
          
             <ul class="nav navbar-nav ">
-                   <li ><a href="indexhome.php"><i class="fa fa-home"></i>Home</a>
+                   <li ><a href="home.php"><i class="fa fa-home"></i>Home</a>
                         </li>
                         <li ><a href="inventario.php"><i class="fa fa-th-large"></i> Inventario</a>
                         </li>
                         <li ><a href="about.php"><i class="fa fa-user"></i> Acerca De</a>
                         </li>
 
-                        <li><a href="about.php"><i class="fa fa-question-circle"></i> Ayuda</a>
+                        <li><a href="ayuda.php"><i class="fa fa-question-circle"></i> Ayuda</a>
                         </li>
                         
                    

@@ -1,4 +1,40 @@
 <?php
+$connection = mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
+$query  = "SELECT * FROM `images` order by id_image desc limit 6";
+$res    = mysqli_query($connection,$query);
+$count  =   mysqli_num_rows($res);
+$slides='';
+$Indicators='';
+$counter=0;
+
+ while($row=mysqli_fetch_array($res))
+    {
+ 
+        $title = $row['titulo'];
+        $image = $row['imagen'];
+        if($counter == 0)
+           {
+            $Indicators .='<li data-target="#carousel-example-generic" data-slide-to="'.$counter.'" class="active"></li>';
+            $slides .= '<div class="item active">
+            <img src="../img/'.$image.'" alt="'.$title.'" />
+            <div class="carousel-caption">
+              <h3>'.$title.'</h3>    
+            </div>
+          </div>';
+ 
+        }
+        else
+        {
+            $Indicators .='<li data-target="#carousel-example-generic" data-slide-to="'.$counter.'"></li>';
+            $slides .= '<div class="item">
+            <img src="../img/'.$image.'" alt="'.$title.'" />
+            <div class="carousel-caption">
+              <h3>'.$title.'</h3>      
+            </div>
+          </div>';
+        }
+        $counter++;
+    }
 session_start();
 if (isset($_SESSION['LOGIN']))
 {
@@ -33,20 +69,24 @@ if (isset($_SESSION['LOGIN']))
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="active" class="nav navbar-nav side-nav">
                     <li><a href="paneladmin.php"><i class="fa fa-bullseye"></i> Panel de Administrador</a></li>
-                    <li><a href="portfolio.html"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
-                    <li><a href="blog.html"><i class="fa  fa-pencil-square"></i> Modificar Productos</a></li>
+                    <li><a href="addproducts.php"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
+                     <li><a href="update_products.php"><i class="fa  fa-pencil-square"></i> Actualizar Productos</a></li>
                     <li><a href="eliminarproductos.php"><i class="fa fa-minus-square"></i> Eliminar Productos</a></li>
                     <li><a href="consulta.php"><i class="fa fa-list-ol"></i> Consultar Productos</a></li>
                     <li class="selected"><a href="addnew.php"><i class="fa fa-picture-o"></i> Slider dinámico</a></li>
-                    <li><a href="forms.html"><i class="fa fa-globe"></i> Noticias</a></li>
-                    <li><a href="typography.html"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
+              <li><a href="edit_news.php"><i class="fa fa-globe"></i> Noticias</a></li>
+                    <li><a href="report_shop.php"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right navbar-user">
+                   <ul class="nav navbar-nav navbar-right navbar-user">
                     <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['LOGIN']; ?><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../img/<?php echo $_SESSION['LOGIN'];?>.ico">
+                             <?php echo $_SESSION['LOGIN'];?>
+                              <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
+                            <li><a href="home.php" target="_blank"><i class="fa fa-home"></i> Ir a Página Principal</a></li>
+                             <li><a href="change_password.php"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
                             <li><a href="logout.php"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
 
                         </ul>
@@ -57,7 +97,40 @@ if (isset($_SESSION['LOGIN']))
         </nav>
 
         <div id="page-wrapper">
+  <div id="slider-wrapper">
 
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                 <?php echo $Indicators; ?>
+                            </ol>
+                        <div class="carousel-inner">
+                                 <?php echo $slides; ?>  
+
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                                <span class="fa fa-chevron-circle-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                                <span class="fa fa-chevron-circle-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+               </div>
             <div class="row">
                 <div class="col-lg-12">
                      <center><h1>AGREGAR NUEVA IMAGEN</h1></center>
@@ -69,69 +142,7 @@ if (isset($_SESSION['LOGIN']))
            
             <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
-<script>
-        $(document).ready(function() { /*Función para mostrar la barra de progreso al subir una foto*/
-        //elements
-        var progressbox     = $('#progressbox');
-        var progressbar     = $('#progressbar');
-        var statustxt       = $('#statustxt');
-        var submitbutton    = $("#SubmitButton");
-        var myform          = $("#UploadForm");
-        var output          = $("#output");
-        var completed       = '0%';
-                $(myform).ajaxForm({
-                    beforeSend: function() { //Antes de enviar
-                        submitbutton.attr('disabled', ''); // disable upload button
-                        statustxt.empty();
-                        progressbox.slideDown(); //show progressbar
-                        progressbar.width(completed); //initial value 0% of progressbar
-                        statustxt.html(completed); //set status text
-                        statustxt.css('color','#000'); //initial color of status text
-                    },
-                    uploadProgress: function(event, position, total, percentComplete) { //on progress
-                        progressbar.width(percentComplete + '%') //update progressbar percent complete
-                        statustxt.html(percentComplete + '%'); //update status text
-                        if(percentComplete>50)
-                            {
-                                statustxt.css('color','#fff'); //change status text to white after 50%
-                            }
-                        },
-                    complete: function(response) { // on complete
-                        output.html(response.responseText); //update element with received data
-                        myform.resetForm();  // reset form
-                        submitbutton.removeAttr('disabled'); //enable submit button
-                        progressbox.slideUp(); // hide progressbar
-                    }
-            });
-        });
-
-    </script>
-<style>
-#progressbox {
-border: 1px solid #0099CC;
-padding: 1px; 
-position:relative;
-width:400px;
-border-radius: 3px;
-margin: 10px;
-display:none;
-text-align:left;
-}
-#progressbar {
-height:20px;
-border-radius: 3px;
-background-color: #003333;
-width:1%;
-}
-#statustxt {
-top:3px;
-left:50%;
-position:absolute;
-display:inline-block;
-color: #000000;
-}
-</style>
-
+<script type="text/javascript" src="../js/image.js"></script>
 <form action="procesosubir.php" method="post" enctype="multipart/form-data" id="UploadForm">
 <center><table width="500" border="0">
   <center><i class="fa fa-upload fa-2x"></i></center>

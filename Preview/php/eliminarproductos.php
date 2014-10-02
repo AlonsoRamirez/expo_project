@@ -1,4 +1,21 @@
 <?php
+$connection = mysqli_connect('localhost','root','bol2014','beatsonlife') or die(mysqli_error($connection));
+$query  = "SELECT `codigo_pr`, `nombre_pr`, `descripcion_pr`, `precio_pr` FROM `producto`";
+$res    = mysqli_query($connection,$query);
+$count  =   mysqli_num_rows($res);
+$print='';
+ while($row=mysqli_fetch_array($res))
+    {
+       $codigo = $row['codigo_pr'];
+        $nombre = $row['nombre_pr'];
+        $descripcion = $row['descripcion_pr'];
+        $precio = $row['precio_pr'];
+          $print.="<tr><td>".$codigo."</td><td>".$nombre."</td><td>".$descripcion."</td><td>".$precio."</td><td>
+                 <a class='btn btn-xs btn-danger' href='delete_action.php?id=".$codigo."'><i class='fa fa-minus-circle'></i> Eliminar</a>
+              </td></tr> ";
+ 
+        
+    }
 session_start();
 if (isset($_SESSION['LOGIN']))
 {
@@ -15,6 +32,7 @@ if (isset($_SESSION['LOGIN']))
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.js"></script>
 </head>
+
 <body>
 
     <div id="wrapper">
@@ -33,20 +51,24 @@ if (isset($_SESSION['LOGIN']))
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="active" class="nav navbar-nav side-nav">
                     <li><a href="paneladmin.php"><i class="fa fa-bullseye"></i> Panel de Administrador</a></li>
-                    <li><a href="portfolio.html"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
-                    <li><a href="blog.html"><i class="fa  fa-pencil-square"></i> Modificar Productos</a></li>
+                    <li><a href="addproducts.php"><i class="fa fa-plus-square"></i> Agregar Productos</a></li>
+                      <li><a href="update_products.php"><i class="fa  fa-pencil-square"></i> Actualizar Productos</a></li>
                     <li class="selected"><a href="eliminarproductos.php"><i class="fa fa-minus-square"></i> Eliminar Productos</a></li>
                     <li><a href="consulta.php"><i class="fa fa-list-ol"></i> Consultar Productos</a></li>
                     <li><a href="addnew.php"><i class="fa fa-picture-o"></i> Slider dinámico</a></li>
-                    <li><a href="forms.html"><i class="fa fa-globe"></i> Noticias</a></li>
-                    <li><a href="typography.html"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
+                   <li><a href="edit_news.php"><i class="fa fa-globe"></i> Noticias</a></li>
+                    <li><a href="report_shop.php"><i class="fa fa-shopping-cart"></i> Reporte de Compra</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right navbar-user">
+                   <ul class="nav navbar-nav navbar-right navbar-user">
                     <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['LOGIN']; ?><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../img/<?php echo $_SESSION['LOGIN'];?>.ico">
+                             <?php echo $_SESSION['LOGIN'];?>
+                              <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
+                            <li><a href="indexhome.php" target="_blank"><i class="fa fa-home"></i> Ir a Página Principal</a></li>
+                                 <li><a href="change_password.php"><i class="fa fa-gear"></i> Configuración de Cuenta</a></li>
                             <li><a href="logout.php"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
 
                         </ul>
@@ -62,28 +84,23 @@ if (isset($_SESSION['LOGIN']))
                 <div class="col-lg-12">
                     <center><h1>ELIMINAR PRODUCTOS</h1></center>
                     <center><hr width="600"></center>
+<div class="container">
+    <div class="row">
+  <table class="table" id="dev-table">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Acción</th>
+    </tr>
+    <tbody>
+        <?php echo $print;?>
+     </tbody>
+    </table>
+    </div><!-- /row -->
+</div>
 
-              
-          <center> <h4 class="delete-id">ID del producto:</h4></center>
-           <br>
-
-            <script type="text/javascript">
-       window.onload=function(){
-  $('.selectpicker').selectpicker();
-       };
-
-
-      </script>
-
-             <center><select class="selectpicker btn-success">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-  </select></center>
-
-<br>
-<br>
-<center>  <a class="btn btn-danger btn-lg" href="#" role="button">Eliminar <i class="fa fa-minus-circle"></i> </a></center>
                   
                 </div>
             </div>
